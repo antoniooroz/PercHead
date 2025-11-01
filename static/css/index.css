@@ -155,3 +155,59 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.reconstruction-section {
+  background-color: #fafafa;
+}
+
+.reconstruction-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.reconstruction-item {
+  display: flex;
+}
+
+.reconstruction-video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.reconstruction-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.reconstruction-input {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 33.333%;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #f4f4f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+  .reconstruction-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .reconstruction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reconstruction-input {
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+}
