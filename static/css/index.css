@@ -176,12 +176,18 @@ body {
   border-radius: 12px;
   overflow: hidden;
   background: #000;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .reconstruction-video-wrapper video {
   width: 100%;
   height: 100%;
   display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .reconstruction-input {
