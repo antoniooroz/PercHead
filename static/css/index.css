@@ -162,7 +162,7 @@ body {
 
 .reconstruction-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
@@ -192,9 +192,9 @@ body {
 
 .reconstruction-input {
   position: absolute;
-  bottom: 0.05rem;
-  left: 0.05rem;
-  width: 15%;
+  bottom: 0.1rem;
+  left: 0.1rem;
+  width: 20%;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background: #f4f4f4;
