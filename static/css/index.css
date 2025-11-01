@@ -192,9 +192,9 @@ body {
 
 .reconstruction-input {
   position: absolute;
-  bottom: 0.25rem;
-  left: 0.25rem;
-  width: 25%;
+  bottom: 0.05rem;
+  left: 0.05rem;
+  width: 15%;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background: #f4f4f4;
