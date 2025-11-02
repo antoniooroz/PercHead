@@ -31,6 +31,36 @@ body {
 .publication-title {
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, #CB297B, #650E47);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text b,
+.gradient-text strong {
+  background: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.publication-title.gradient-text {
+  display: inline-block;
+}
+
+.hero-teaser {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.25rem;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  width: fit-content;
+  max-width: 100%;
+}
+
 .publication-banner {
   max-height: parent;
 
