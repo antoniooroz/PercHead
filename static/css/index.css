@@ -170,6 +170,8 @@ body {
 .reconstruction-item,
 .editing-item {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .reconstruction-video-wrapper,
@@ -219,6 +221,23 @@ body {
   border-radius: 10px;
   background: #f4f4f4;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.editing-prompt {
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #262626;
+  font-size: 0.95rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.prompt-label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+  color: #111;
 }
 
 @media (max-width: 1024px) {
