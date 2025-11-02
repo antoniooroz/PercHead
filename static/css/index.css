@@ -82,16 +82,17 @@ body {
 .hero-inline-prompt {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
   padding: 0.35rem 0.6rem;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  background: #f4f4f4;
+  background: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #262626;
   font-size: 0.8rem;
   width: 76%;
-  height: 22.5%;
+  align-self: stretch;
 }
 
 .hero-inline-prompt .prompt-text {
