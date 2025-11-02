@@ -352,6 +352,27 @@ body {
   color: #262626;
 }
 
+.interactive-ui-section .interactive-video-container {
+  margin: 1.5rem auto 1rem;
+  max-width: 100%;
+}
+
+.interactive-ui-section .interactive-video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: #000;
+}
+
+.interactive-video-note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.interactive-video-button {
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 1024px) {
   .reconstruction-grid,
   .editing-grid {
