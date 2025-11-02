@@ -32,20 +32,35 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #CB297B, #650E47);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: #CB297B;
+  background-image: linear-gradient(90deg, #CB297B, #650E47);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .gradient-text b,
 .gradient-text strong {
-  background: inherit;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: inherit;
+  background-image: inherit;
+  background-size: inherit;
+  background-repeat: inherit;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .gradient-text {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradient-text b,
+  .gradient-text strong {
+    color: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+  }
 }
 
 .publication-title.gradient-text {
