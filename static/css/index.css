@@ -95,7 +95,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #262626;
   font-size: 0.8rem;
-  width: 84%;
+  width: 83%;
   align-self: stretch;
   text-align: center;
 }
@@ -315,9 +315,50 @@ body {
   color: #111;
 }
 
+.video-generation-section {
+  background-color: #fff;
+}
+
+.video-generation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.video-generation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.video-generation-video-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-generation-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.video-generation-caption {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #262626;
+}
+
 @media (max-width: 1024px) {
   .reconstruction-grid,
   .editing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .video-generation-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -337,5 +378,9 @@ body {
     bottom: 0.75rem;
     left: 0.75rem;
     gap: 0.4rem;
+  }
+
+  .video-generation-grid {
+    grid-template-columns: 1fr;
   }
 }
