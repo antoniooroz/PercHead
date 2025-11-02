@@ -224,7 +224,8 @@ body {
 }
 
 .editing-prompt {
-  margin-top: 0.25rem;
+  margin-top: 0.05rem;
+  margin-bottom: 0.25rem;
   padding: 0.45rem 0.6rem;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.9);
