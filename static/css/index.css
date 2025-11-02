@@ -160,17 +160,20 @@ body {
   background-color: #fafafa;
 }
 
-.reconstruction-grid {
+.reconstruction-grid,
+.editing-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
-.reconstruction-item {
+.reconstruction-item,
+.editing-item {
   display: flex;
 }
 
-.reconstruction-video-wrapper {
+.reconstruction-video-wrapper,
+.editing-video-wrapper {
   position: relative;
   width: 100%;
   border-radius: 12px;
@@ -180,7 +183,8 @@ body {
   -webkit-user-select: none;
 }
 
-.reconstruction-video-wrapper video {
+.reconstruction-video-wrapper video,
+.editing-video-wrapper video {
   width: 100%;
   height: 100%;
   display: block;
@@ -201,19 +205,43 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.editing-inputs {
+  position: absolute;
+  bottom: 0.15rem;
+  left: 0.15rem;
+  display: flex;
+  gap: 0.15rem;
+}
+
+.editing-input {
+  width: 25%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #f4f4f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 1024px) {
-  .reconstruction-grid {
+  .reconstruction-grid,
+  .editing-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
-  .reconstruction-grid {
+  .reconstruction-grid,
+  .editing-grid {
     grid-template-columns: 1fr;
   }
 
   .reconstruction-input {
     bottom: 0.75rem;
     left: 0.75rem;
+  }
+
+  .editing-inputs {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    gap: 0.4rem;
   }
 }
