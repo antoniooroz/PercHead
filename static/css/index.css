@@ -89,8 +89,9 @@ body {
   background: #f4f4f4;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #262626;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   width: 76%;
+  height: 22.5%;
 }
 
 .hero-inline-prompt .prompt-text {
