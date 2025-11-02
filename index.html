@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="PercHead: Perceptual Head Model for Single-Image 3D Head Reconstruction & Editing">
+  <meta name="description" content="PercHead: Perceptual Head Model for Single-Image 3D Head Reconstruction & Editing">
   <meta name="keywords" content="PercHead, 3D Head Reconstruction, 3D Head Editing, Gaussian Splatting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PercHead: Perceptual Head Model for Single-Image 3D Head Reconstruction & Editing</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
@@ -26,576 +24,683 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
+
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://antoniooroz.github.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://antoniooroz.github.io">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
       </div>
     </div>
 
-  </div>
-</nav>
+    </div>
+  </nav>
 
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">PercHead: Perceptual Head Model for Single-Image 3D Head Reconstruction & Editing</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://antoniooroz.github.io">Antonio Oroz</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://niessnerlab.org">Matthias Nießner</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://tobias-kirschstein.github.io">Tobias Kirschstein</a><sup>1</sup>,
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Technical University of Munich</span>
-          </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <span class="external-link button is-normal is-rounded is-dark is-static"
-                      aria-disabled="true" tabindex="-1">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </span>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <span class="external-link button is-normal is-rounded is-dark is-static"
-                      aria-disabled="true" tabindex="-1">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </span>
-              </span>
-              <!-- Code Link. -->
-              <span class="link-block">
-                <span class="external-link button is-normal is-rounded is-dark is-static"
-                      aria-disabled="true" tabindex="-1">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code (available soon)</span>
-                </span>
+            <h1 class="title is-1 publication-title">PercHead: Perceptual Head Model for Single-Image 3D Head
+              Reconstruction & Editing</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://antoniooroz.github.io">Antonio Oroz</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://niessnerlab.org">Matthias Nießner</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://tobias-kirschstein.github.io">Tobias Kirschstein</a><sup>1</sup>,
               </span>
             </div>
 
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Technical University of Munich</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true"
+                    tabindex="-1">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </span>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true"
+                    tabindex="-1">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </span>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <span class="external-link button is-normal is-rounded is-dark is-static" aria-disabled="true"
+                    tabindex="-1">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (available soon)</span>
+                  </span>
+                </span>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          We present PercHead, a method for single-image 3D head reconstruction and semantic 3D editing — two tasks that are inherently challenging due to severe view occlusions, weak perceptual supervision, and the ambiguity of editing in 3D space. We develop a uniﬁed base model for reconstructing view-consistent 3D heads from a single input image. The model employs a dual-branch encoder followed by a ViT-based decoder that lifts 2D features into 3D space through iterative cross-attention. Rendering is performed using Gaussian Splatting. At the heart of our approach is a novel perceptual supervision strategy based on DINOv2 and SAM2.1, which provides rich, generalized signals for both geometric and appearance fidelity. Our model achieves state-of-the-art performance in novel-view synthesis and, furthermore, exhibits exceptional robustness to extreme viewing angles compared to established baselines. Furthermore, this base model can be seamlessly extended for semantic 3D editing by swapping the encoder and ﬁnetuning the network. In this variant, we disentangle geometry and style through two distinct input modalities: a segmentation map to control geometry and either a text prompt or a reference image to specify appearance. We highlight the intuitive and powerful 3D editing capabilities of our model through a lightweight, interactive GUI, where users can effortlessly sculpt geometry by drawing segmentation maps and stylize appearance via natural language or image prompts.
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width has-text-centered">
+            <div class="reconstruction-grid">
+            <div class="reconstruction-item">
+              <div class="reconstruction-video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="./static/images/reconstruction_results/reconstruction04.mp4" type="video/mp4">
+                </video>
+                <img class="reconstruction-input" src="./static/images/reconstruction_results/input04.png"
+                  alt="Input 04">
+              </div>
+            </div>
+            <div class="reconstruction-item">
+              <div class="reconstruction-video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="./static/images/reconstruction_results/reconstruction12.mp4" type="video/mp4">
+                </video>
+                <img class="reconstruction-input" src="./static/images/reconstruction_results/input12.png"
+                  alt="Input 12">
+              </div>
+            </div>
+            <div class="editing-item">
+              <div class="editing-video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="./static/images/editing_style_from_image/result04.mp4" type="video/mp4">
+                </video>
+                <div class="editing-inputs">
+                  <img class="editing-input" src="./static/images/editing_style_from_image/geom04.png"
+                    alt="Geometry Input 04">
+                  <img class="editing-input" src="./static/images/editing_style_from_image/style04.png"
+                    alt="Style Input 04">
+                </div>
+              </div>
+            </div>
+            <div class="editing-item">
+              <div class="editing-video-wrapper">
+                <video autoplay loop muted playsinline>
+                  <source src="./static/images/editing_style_from_text/result01.mp4" type="video/mp4">
+                </video>
+                <div class="editing-inputs">
+                  <img class="editing-input" src="./static/images/editing_style_from_text/geom01.png"
+                    alt="Geometry Input 01">
+                </div>
+              </div>
+              <div class="editing-prompt">
+                <span class="prompt-text">"female with curly hair"</span>
+              </div>
+            </div>
+          </div>
+          </div>
+            PercHead reconstructs 3D heads from a single input image and enables disentangled 3D editing using semantic maps combined with image or text-based style inputs.
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+  </section>
 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
-        <figure class="image">
-          <img src="./static/images/method.png"
-               alt="Overview of our method showing the reconstruction and editing pipelines.">
-        </figure>
-        <div class="content has-text-justified">
-          <p><strong>Overview of Our Method.</strong> Our framework supports 3D Reconstruction from a single image and 3D Editing from a segmentation map and style input. Both tasks share a 3D ViT decoder that lifts 2D features via iterative cross-attention, differing only in the encoder. The reconstruction model uses a dual-branch encoder with DINOv2 and a task-specific ViT; the editing model uses a segmentation ViT and injects a global CLIP style token. Outputs are rendered via Gaussian Splatting and refined with a 2D CNN, with supervision from DINOv2 and SAM2.1.</p>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            We present PercHead, a method for single-image 3D head reconstruction and semantic 3D editing — two tasks
+            that are inherently challenging due to severe view occlusions, weak perceptual supervision, and the
+            ambiguity of editing in 3D space. We develop a uniﬁed base model for reconstructing view-consistent 3D heads
+            from a single input image. The model employs a dual-branch encoder followed by a ViT-based decoder that
+            lifts 2D features into 3D space through iterative cross-attention. Rendering is performed using Gaussian
+            Splatting. At the heart of our approach is a novel perceptual supervision strategy based on DINOv2 and
+            SAM2.1, which provides rich, generalized signals for both geometric and appearance fidelity. Our model
+            achieves state-of-the-art performance in novel-view synthesis and, furthermore, exhibits exceptional
+            robustness to extreme viewing angles compared to established baselines. Furthermore, this base model can be
+            seamlessly extended for semantic 3D editing by swapping the encoder and ﬁnetuning the network. In this
+            variant, we disentangle geometry and style through two distinct input modalities: a segmentation map to
+            control geometry and either a text prompt or a reference image to specify appearance. We highlight the
+            intuitive and powerful 3D editing capabilities of our model through a lightweight, interactive GUI, where
+            users can effortlessly sculpt geometry by drawing segmentation maps and stylize appearance via natural
+            language or image prompts.
+          </div>
         </div>
       </div>
-    </div>
+      <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <!--<iframe src="https://www.youtube.com/embed/video-id?rel=0&amp;showinfo=0"
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Method</h2>
+          <figure class="image">
+            <img src="./static/images/method.png"
+              alt="Overview of our method showing the reconstruction and editing pipelines.">
+          </figure>
+          <div class="content has-text-justified">
+            <p><strong>Overview of Our Method.</strong> Our framework supports 3D Reconstruction from a single image and
+              3D Editing from a segmentation map and style input. Both tasks share a 3D ViT decoder that lifts 2D
+              features via iterative cross-attention, differing only in the encoder. The reconstruction model uses a
+              dual-branch encoder with DINOv2 and a task-specific ViT; the editing model uses a segmentation ViT and
+              injects a global CLIP style token. Outputs are rendered via Gaussian Splatting and refined with a 2D CNN,
+              with supervision from DINOv2 and SAM2.1.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <!--<iframe src="https://www.youtube.com/embed/video-id?rel=0&amp;showinfo=0"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-          Video Placeholder
+            Video Placeholder
+          </div>
         </div>
       </div>
+      <!--/ Paper video. -->
     </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
+  </section>
 
-<section class="section reconstruction-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <h2 class="title is-3">Reconstruction Results</h2>
-      </div>
-    </div>
-    <div class="reconstruction-grid">
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction01.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input01.png" alt="Input 01">
+  <section class="section reconstruction-section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <h2 class="title is-3">Reconstruction Results</h2>
         </div>
       </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction02.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input02.png" alt="Input 02">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction03.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input03.png" alt="Input 03">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction04.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input04.png" alt="Input 04">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction05.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input05.png" alt="Input 05">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction06.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input06.png" alt="Input 06">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction07.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input07.png" alt="Input 07">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction08.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input08.png" alt="Input 08">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction09.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input09.png" alt="Input 09">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction10.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input10.png" alt="Input 10">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction11.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input11.png" alt="Input 11">
-        </div>
-      </div>
-      <div class="reconstruction-item">
-        <div class="reconstruction-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/reconstruction_results/reconstruction12.mp4" type="video/mp4">
-          </video>
-          <img class="reconstruction-input" src="./static/images/reconstruction_results/input12.png" alt="Input 12">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section reconstruction-section editing-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <h2 class="title is-3">Disentangled Editing: Geometry via Segmentation &amp; Style via Image</h2>
-      </div>
-    </div>
-    <div class="editing-grid">
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result01.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom01.png" alt="Geometry Input 01">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style01.png" alt="Style Input 01">
+      <div class="reconstruction-grid">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction01.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input01.png" alt="Input 01">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result02.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom02.png" alt="Geometry Input 02">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style02.png" alt="Style Input 02">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction02.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input02.png" alt="Input 02">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result03.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom03.png" alt="Geometry Input 03">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style03.png" alt="Style Input 03">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction03.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input03.png" alt="Input 03">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result04.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom04.png" alt="Geometry Input 04">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style04.png" alt="Style Input 04">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction04.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input04.png" alt="Input 04">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result05.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom05.png" alt="Geometry Input 05">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style05.png" alt="Style Input 05">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction05.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input05.png" alt="Input 05">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result06.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom06.png" alt="Geometry Input 06">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style06.png" alt="Style Input 06">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction06.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input06.png" alt="Input 06">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result07.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom07.png" alt="Geometry Input 07">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style07.png" alt="Style Input 07">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction07.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input07.png" alt="Input 07">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result08.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom08.png" alt="Geometry Input 08">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style08.png" alt="Style Input 08">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction08.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input08.png" alt="Input 08">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result09.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom09.png" alt="Geometry Input 09">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style09.png" alt="Style Input 09">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction09.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input09.png" alt="Input 09">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result10.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom10.png" alt="Geometry Input 10">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style10.png" alt="Style Input 10">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction10.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input10.png" alt="Input 10">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result11.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom11.png" alt="Geometry Input 11">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style11.png" alt="Style Input 11">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction11.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input11.png" alt="Input 11">
           </div>
         </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_image/result12.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_image/geom12.png" alt="Geometry Input 12">
-            <img class="editing-input" src="./static/images/editing_style_from_image/style12.png" alt="Style Input 12">
+        <div class="reconstruction-item">
+          <div class="reconstruction-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/reconstruction_results/reconstruction12.mp4" type="video/mp4">
+            </video>
+            <img class="reconstruction-input" src="./static/images/reconstruction_results/input12.png" alt="Input 12">
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="section reconstruction-section editing-section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <h2 class="title is-3">Disentangled Editing: Geometry via Segmentation &amp; Style via Prompt</h2>
+  </section>
+  <section class="section reconstruction-section editing-section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <h2 class="title is-3">Disentangled Editing: Geometry via Segmentation &amp; Style via Image</h2>
+        </div>
+      </div>
+      <div class="editing-grid">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result01.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom01.png"
+                alt="Geometry Input 01">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style01.png"
+                alt="Style Input 01">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result02.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom02.png"
+                alt="Geometry Input 02">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style02.png"
+                alt="Style Input 02">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result03.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom03.png"
+                alt="Geometry Input 03">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style03.png"
+                alt="Style Input 03">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result04.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom04.png"
+                alt="Geometry Input 04">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style04.png"
+                alt="Style Input 04">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result05.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom05.png"
+                alt="Geometry Input 05">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style05.png"
+                alt="Style Input 05">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result06.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom06.png"
+                alt="Geometry Input 06">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style06.png"
+                alt="Style Input 06">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result07.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom07.png"
+                alt="Geometry Input 07">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style07.png"
+                alt="Style Input 07">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result08.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom08.png"
+                alt="Geometry Input 08">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style08.png"
+                alt="Style Input 08">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result09.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom09.png"
+                alt="Geometry Input 09">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style09.png"
+                alt="Style Input 09">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result10.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom10.png"
+                alt="Geometry Input 10">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style10.png"
+                alt="Style Input 10">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result11.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom11.png"
+                alt="Geometry Input 11">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style11.png"
+                alt="Style Input 11">
+            </div>
+          </div>
+        </div>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_image/result12.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_image/geom12.png"
+                alt="Geometry Input 12">
+              <img class="editing-input" src="./static/images/editing_style_from_image/style12.png"
+                alt="Style Input 12">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="editing-grid">
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result01.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom01.png" alt="Geometry Input 01">
-          </div>
-        </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"female with curly hair"</span>
+  </section>
+  <section class="section reconstruction-section editing-section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+          <h2 class="title is-3">Disentangled Editing: Geometry via Segmentation &amp; Style via Prompt</h2>
         </div>
       </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result02.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom02.png" alt="Geometry Input 02">
+      <div class="editing-grid">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result01.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom01.png"
+                alt="Geometry Input 01">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"female with curly hair"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"female with dark hair"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result03.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom03.png" alt="Geometry Input 03">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result02.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom02.png"
+                alt="Geometry Input 02">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"female with dark hair"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"female with red hair"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result04.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom04.png" alt="Geometry Input 04">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result03.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom03.png"
+                alt="Geometry Input 03">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"female with red hair"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"female with gray hair"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result05.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom05.png" alt="Geometry Input 05">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result04.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom04.png"
+                alt="Geometry Input 04">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"female with gray hair"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"male kid"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result06.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom06.png" alt="Geometry Input 06">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result05.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom05.png"
+                alt="Geometry Input 05">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"male kid"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"male adult"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result07.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom07.png" alt="Geometry Input 07">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result06.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom06.png"
+                alt="Geometry Input 06">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"male adult"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"female adult"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result08.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom08.png" alt="Geometry Input 08">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result07.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom07.png"
+                alt="Geometry Input 07">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"female adult"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"middle-aged female"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result09.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom09.png" alt="Geometry Input 09">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result08.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom08.png"
+                alt="Geometry Input 08">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"middle-aged female"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"male with no beard"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result10.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom10.png" alt="Geometry Input 10">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result09.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom09.png"
+                alt="Geometry Input 09">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"male with no beard"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"male with gray beard"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result11.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom11.png" alt="Geometry Input 11">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result10.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom10.png"
+                alt="Geometry Input 10">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"male with gray beard"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"man with dark skin"</span>
-        </div>
-      </div>
-      <div class="editing-item">
-        <div class="editing-video-wrapper">
-          <video autoplay loop muted playsinline>
-            <source src="./static/images/editing_style_from_text/result12.mp4" type="video/mp4">
-          </video>
-          <div class="editing-inputs">
-            <img class="editing-input" src="./static/images/editing_style_from_text/geom12.png" alt="Geometry Input 12">
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result11.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom11.png"
+                alt="Geometry Input 11">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"man with dark skin"</span>
           </div>
         </div>
-        <div class="editing-prompt">
-          <span class="prompt-text">"serious looking female"</span>
+        <div class="editing-item">
+          <div class="editing-video-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="./static/images/editing_style_from_text/result12.mp4" type="video/mp4">
+            </video>
+            <div class="editing-inputs">
+              <img class="editing-input" src="./static/images/editing_style_from_text/geom12.png"
+                alt="Geometry Input 12">
+            </div>
+          </div>
+          <div class="editing-prompt">
+            <span class="prompt-text">"serious looking female"</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="section" id="Concurrent Work">
+  </section>
+  <section class="section" id="Concurrent Work">
     <div class="container is-max-desktop content">
-        <h2 class="title is-3">Related Links</h2>
+      <h2 class="title is-3">Related Links</h2>
 
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <!--<p>
+      <div class="content has-text-justified">
+        <p>
+          There's a lot of excellent work that was introduced around the same time as ours.
+        </p>
+        <!--<p>
             <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
           </p>
           <p>
@@ -608,47 +713,50 @@
           <p>
             There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
           </p>-->
-        </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code></code></pre>
-  </div>
-</section>
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code></code></pre>
+    </div>
+  </section>
 
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <!--<a class="icon-link"
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <!--<a class="icon-link"
          href="paper link">
         <i class="fas fa-file-pdf"></i>
       </a>
       <a class="icon-link" href="https://antoniooroz.github.io/" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>-->
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This website is based on the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of <a href="https://nerfies.github.io">Nerfies</a>, kindly open-sourced by <a href="https://keunhong.com">Keunhong Park</a>.
-            
-          </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This website is based on the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of <a
+                href="https://nerfies.github.io">Nerfies</a>, kindly open-sourced by <a
+                href="https://keunhong.com">Keunhong Park</a>.
+
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>
