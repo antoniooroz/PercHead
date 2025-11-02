@@ -79,6 +79,10 @@ body {
   gap: 0.35rem;
 }
 
+.hero-inline-inputs .editing-input {
+  width: 15%;
+}
+
 .hero-inline-prompt {
   display: flex;
   align-items: center;
