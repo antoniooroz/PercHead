@@ -61,6 +61,31 @@ body {
   max-width: 100%;
 }
 
+.hero-inline-inputs {
+  gap: 0.35rem;
+}
+
+.hero-inline-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(25, 4, 20, 0.85);
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  max-width: min(60%, 16rem);
+}
+
+.hero-inline-prompt .prompt-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-inline-prompt .prompt-text {
+  color: #fff;
+}
+
 .publication-banner {
   max-height: parent;
 
@@ -242,6 +267,7 @@ body {
   bottom: 0.15rem;
   left: 0.15rem;
   display: flex;
+  align-items: flex-end;
   gap: 0.15rem;
 }
 
