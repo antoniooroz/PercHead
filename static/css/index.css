@@ -316,7 +316,7 @@ body {
 }
 
 .video-generation-section {
-  background-color: #fff;
+  background-color: #fafafa;
 }
 
 .video-generation-grid {
@@ -350,6 +350,10 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
   color: #262626;
+}
+
+.interactive-ui-section {
+  background-color: #fafafa;
 }
 
 .interactive-ui-section .interactive-video-container {
