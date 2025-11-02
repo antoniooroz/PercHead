@@ -93,6 +93,7 @@ body {
   font-size: 0.8rem;
   width: 76%;
   align-self: stretch;
+  text-align: center;
 }
 
 .hero-inline-prompt .prompt-text {
