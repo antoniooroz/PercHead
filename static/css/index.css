@@ -67,6 +67,25 @@ body {
   display: inline-block;
 }
 
+.publication-venue {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0.25rem 0 1.25rem;
+  color: #D72638;
+  background-image: linear-gradient(90deg, #FF4D4D 0%, #D72638 50%, #8B0000 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 2px rgba(215, 38, 56, 0.12);
+}
+
+.publication-venue .venue-highlight {
+  font-style: italic;
+  font-weight: 600;
+}
+
 .hero-teaser {
   font-family: 'Google Sans', sans-serif;
   font-size: 1.25rem;
