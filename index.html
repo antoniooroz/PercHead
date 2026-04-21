@@ -188,21 +188,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            We present PercHead, a method for single-image 3D head reconstruction and semantic 3D editing — two tasks
-            that are inherently challenging due to severe view occlusions, weak perceptual supervision, and the
-            ambiguity of editing in 3D space. We develop a uniﬁed base model for reconstructing view-consistent 3D heads
-            from a single input image. The model employs a dual-branch encoder followed by a ViT-based decoder that
-            lifts 2D features into 3D space through iterative cross-attention. Rendering is performed using Gaussian
-            Splatting. At the heart of our approach is a novel perceptual supervision strategy based on DINOv2 and
-            SAM2.1, which provides rich, generalized signals for both geometric and appearance fidelity. Our model
-            achieves state-of-the-art performance in novel-view synthesis and, furthermore, exhibits exceptional
-            robustness to extreme viewing angles compared to established baselines. Furthermore, this base model can be
-            seamlessly extended for semantic 3D editing by swapping the encoder and ﬁnetuning the network. In this
-            variant, we disentangle geometry and style through two distinct input modalities: a segmentation map to
-            control geometry and either a text prompt or a reference image to specify appearance. We highlight the
-            intuitive and powerful 3D editing capabilities of our model through a lightweight, interactive GUI, where
-            users can effortlessly sculpt geometry by drawing segmentation maps and stylize appearance via natural
-            language or image prompts.
+            We present PercHead, a model for single-image 3D head reconstruction and disentangled 3D editing - two tasks that are inherently challenging due to ambiguity in plausible explanations for the same input. At the heart of our approach lies our novel perceptual loss based on DINOv2 and SAM 2.1. Unlike widely-adopted low-level losses like LPIPS, SSIM or L1, we rely on deep visual understanding of images and the resulting generalized supervision signals. We show that our new loss can be a drop-in replacement for standard losses and used to improve visual quality in high-frequency areas. We base our model architecture on Vision Transformers (ViTs), allowing us to decouple the 3D representation from the 2D input. We train our method on multi-view images for view-consistency and in-the-wild images for strong transferability to new environments. Our model achieves state-of-the-art performance in novel-view synthesis and, furthermore, exhibits exceptional robustness to extreme viewing angles. We also extend our base model to disentangled 3D editing by swapping the encoder and fine-tuning the network. A segmentation map controls geometry and either a text prompt or a reference image specifies appearance. We highlight the intuitive and powerful 3D editing capabilities through an interactive GUI.
           </div>
         </div>
       </div>
@@ -216,12 +202,7 @@
               alt="Overview of our method showing the reconstruction and editing pipelines.">
           </figure>
           <div class="content has-text-justified">
-            <p><strong>Overview of Our Method.</strong> Our framework supports 3D Reconstruction from a single image and
-              3D Editing from a segmentation map and style input. Both tasks share a 3D ViT decoder that lifts 2D
-              features via iterative cross-attention, differing only in the encoder. The reconstruction model uses a
-              dual-branch encoder with DINOv2 and a task-specific ViT; the editing model uses a segmentation ViT and
-              injects a global CLIP style token. Outputs are rendered via Gaussian Splatting and refined with a 2D CNN,
-              with supervision from DINOv2 and SAM2.1.</p>
+            <p><strong>Overview of Our Method.</strong> Our framework supports 3D Reconstruction from a single image and 3D Editing from a segmentation map and style input. We only need to adapt the encoders of our ViT-based architecture between the two tasks. We train on multi-view datasets and extend them with single-view data to improve diversity, without degrading 3D consistency. At the heart of our method is the supervision through DINOv2 and SAM 2.1. Our perceptual loss compares deep image representations, which helps us avoid signals from pixel-level differences.</p>
           </div>
         </div>
       </div>
