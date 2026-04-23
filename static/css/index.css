@@ -75,12 +75,12 @@ body {
   margin: 0.25rem auto 1.25rem;
   text-align: center;
   display: block;
-  color: #D72638;
-  background-image: linear-gradient(90deg, #FF4D4D 0%, #D72638 50%, #8B0000 100%);
+  color: #CB297B;
+  background-image: linear-gradient(90deg, #CB297B, #650E47);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 2px rgba(215, 38, 56, 0.12);
+  text-shadow: 0 1px 2px rgba(203, 41, 123, 0.12);
 }
 
 .publication-venue .venue-highlight {
