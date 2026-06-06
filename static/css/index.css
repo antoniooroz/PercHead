@@ -187,12 +187,92 @@ body {
 
 .loss-highlight {
   position: relative;
-  margin: 1.5rem auto 0;
-  padding: 0.7rem 1.1rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(229, 51, 122, 0.07), rgba(47, 107, 172, 0.07));
-  border: 1px solid rgba(229, 51, 122, 0.22);
-  box-shadow: 0 6px 20px rgba(229, 51, 122, 0.06);
+  isolation: isolate;
+  overflow: visible;
+  margin: 2rem auto 0.5rem;
+  padding: 1.1rem 1.75rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(229, 51, 122, 0.10), rgba(47, 107, 172, 0.10));
+  border: 1px solid rgba(229, 51, 122, 0.32);
+  animation: loss-pulse 3.6s ease-in-out infinite;
+}
+
+.loss-highlight > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Shimmer sweep */
+.loss-highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 46%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.35) 54%,
+    transparent 70%);
+  background-size: 250% 100%;
+  background-position: -160% 0;
+  animation: loss-shimmer 4.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+/* Twinkling sparkles */
+.loss-highlight::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 18px;
+  background-image:
+    radial-gradient(circle 2.2px at 4% 32%,  rgba(229, 51, 122, 1) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.5px at 11% 78%, rgba(47, 107, 172, 1) 0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.8px at 22% 18%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.4px at 49% 92%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 2px   at 78% 12%, rgba(47, 107, 172, 1) 0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.6px at 88% 70%, rgba(229, 51, 122, 1) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 2px   at 96% 38%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%);
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 3px rgba(229, 51, 122, 0.55));
+  animation: loss-twinkle 2.4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes loss-shimmer {
+  0%   { background-position: -160% 0; }
+  60%  { background-position: 260% 0; }
+  100% { background-position: 260% 0; }
+}
+
+@keyframes loss-pulse {
+  0%, 100% {
+    box-shadow:
+      0 4px 14px rgba(229, 51, 122, 0.08),
+      0 0 0 0 rgba(229, 51, 122, 0.0);
+  }
+  50% {
+    box-shadow:
+      0 10px 28px rgba(229, 51, 122, 0.22),
+      0 0 0 4px rgba(229, 51, 122, 0.08);
+  }
+}
+
+@keyframes loss-twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.96); }
+  50%      { opacity: 1;    transform: scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loss-highlight,
+  .loss-highlight::before,
+  .loss-highlight::after {
+    animation: none !important;
+  }
 }
 
 .loss-highlight-inline {
@@ -200,7 +280,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem 1rem;
+  gap: 0.6rem 1.5rem;
   max-width: fit-content;
 }
 
@@ -214,9 +294,10 @@ body {
 
 .loss-highlight-title {
   font-family: 'Google Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0.01em;
+  line-height: 1.25;
   color: var(--brand-pink);
   background-image: linear-gradient(90deg, var(--brand-pink), var(--brand-pink-deep));
   -webkit-background-clip: text;
@@ -226,7 +307,7 @@ body {
 
 .loss-highlight-subtitle {
   font-family: 'Google Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--brand-muted);
 }
 
@@ -234,7 +315,7 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.55rem;
 }
 
 .loss-highlight-buttons .link-block a {
