@@ -216,36 +216,66 @@ body {
     transparent 70%);
   background-size: 250% 100%;
   background-position: -160% 0;
-  animation: loss-shimmer 4.2s ease-in-out infinite;
+  animation: loss-shimmer 7.5s ease-in-out infinite;
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: screen;
 }
 
-/* Twinkling sparkles */
-.loss-highlight::after {
+/* Twinkling sparkles - two layers with staggered timing */
+.loss-highlight::after,
+.loss-highlight .loss-sparkle-layer {
   content: '';
   position: absolute;
-  inset: -6px;
-  border-radius: 18px;
-  background-image:
-    radial-gradient(circle 2.2px at 4% 32%,  rgba(229, 51, 122, 1) 0%, rgba(229, 51, 122, 0) 70%),
-    radial-gradient(circle 1.5px at 11% 78%, rgba(47, 107, 172, 1) 0%, rgba(47, 107, 172, 0) 70%),
-    radial-gradient(circle 1.8px at 22% 18%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
-    radial-gradient(circle 1.4px at 49% 92%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
-    radial-gradient(circle 2px   at 78% 12%, rgba(47, 107, 172, 1) 0%, rgba(47, 107, 172, 0) 70%),
-    radial-gradient(circle 1.6px at 88% 70%, rgba(229, 51, 122, 1) 0%, rgba(229, 51, 122, 0) 70%),
-    radial-gradient(circle 2px   at 96% 38%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%);
+  inset: -8px;
+  border-radius: 22px;
   background-repeat: no-repeat;
-  filter: drop-shadow(0 0 3px rgba(229, 51, 122, 0.55));
-  animation: loss-twinkle 2.4s ease-in-out infinite;
   pointer-events: none;
   z-index: 3;
 }
 
+.loss-highlight::after {
+  background-image:
+    radial-gradient(circle 2.4px at 3%  22%, rgba(229, 51, 122, 1)    0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.6px at 9%  72%, rgba(47, 107, 172, 1)    0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.9px at 16% 12%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.3px at 19% 48%, rgba(47, 107, 172, 0.9)  0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.8px at 27% 86%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.4px at 36% 24%, rgba(229, 51, 122, 0.9)  0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 2.1px at 48% 6%,  rgba(47, 107, 172, 1)    0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.5px at 52% 94%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.7px at 64% 38%, rgba(47, 107, 172, 0.9)  0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.4px at 71% 78%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 2.0px at 80% 14%, rgba(229, 51, 122, 1)    0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.6px at 88% 58%, rgba(47, 107, 172, 1)    0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.8px at 94% 28%, rgba(229, 51, 122, 0.95) 0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.5px at 97% 82%, rgba(229, 51, 122, 0.9)  0%, rgba(229, 51, 122, 0) 70%);
+  filter: drop-shadow(0 0 3px rgba(229, 51, 122, 0.55));
+  animation: loss-twinkle 2.4s ease-in-out infinite;
+}
+
+.loss-highlight .loss-sparkle-layer {
+  background-image:
+    radial-gradient(circle 1.6px at 6%  54%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle 1.3px at 14% 30%, rgba(229, 51, 122, 0.9)   0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.8px at 24% 64%, rgba(47, 107, 172, 1)     0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.2px at 32% 8%,  rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle 1.7px at 41% 72%, rgba(229, 51, 122, 0.95)  0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.4px at 55% 30%, rgba(255, 255, 255, 0.9)  0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle 1.9px at 60% 88%, rgba(47, 107, 172, 0.95)  0%, rgba(47, 107, 172, 0) 70%),
+    radial-gradient(circle 1.3px at 68% 18%, rgba(229, 51, 122, 0.9)   0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.6px at 75% 56%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle 1.5px at 84% 88%, rgba(229, 51, 122, 0.95)  0%, rgba(229, 51, 122, 0) 70%),
+    radial-gradient(circle 1.3px at 91% 44%, rgba(255, 255, 255, 0.9)  0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle 1.7px at 99% 12%, rgba(47, 107, 172, 1)     0%, rgba(47, 107, 172, 0) 70%);
+  filter: drop-shadow(0 0 3px rgba(47, 107, 172, 0.5));
+  animation: loss-twinkle 3.1s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+
 @keyframes loss-shimmer {
   0%   { background-position: -160% 0; }
-  60%  { background-position: 260% 0; }
+  55%  { background-position: 260% 0; }
   100% { background-position: 260% 0; }
 }
 
@@ -270,26 +300,29 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .loss-highlight,
   .loss-highlight::before,
-  .loss-highlight::after {
+  .loss-highlight::after,
+  .loss-highlight .loss-sparkle-layer {
     animation: none !important;
   }
 }
 
 .loss-highlight-inline {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem 1.5rem;
-  max-width: fit-content;
+  gap: 0.85rem;
+  max-width: 100%;
+  width: fit-content;
 }
 
 .loss-highlight-text {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.2;
-  text-align: left;
+  align-items: center;
+  line-height: 1.25;
+  text-align: center;
+  gap: 0.15rem;
 }
 
 .loss-highlight-title {
