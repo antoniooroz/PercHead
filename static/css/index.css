@@ -1,5 +1,30 @@
+:root {
+  --brand-pink: #E5337A;
+  --brand-pink-soft: #ED5C95;
+  --brand-pink-deep: #9E1F5C;
+  --brand-blue: #1F4079;
+  --brand-blue-light: #2F6BAC;
+  --brand-blue-deep: #142C55;
+  --brand-ink: #1a1f2e;
+  --brand-muted: #5c6373;
+  --brand-bg-soft: #fbfafd;
+  --brand-bg-cream: #f7f6fb;
+  --brand-border: rgba(31, 64, 121, 0.12);
+  --brand-border-strong: rgba(31, 64, 121, 0.2);
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
+  color: var(--brand-ink);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(229, 51, 122, 0.18);
+  color: var(--brand-ink);
 }
 
 
@@ -32,8 +57,8 @@ body {
 }
 
 .gradient-text {
-  color: #CB297B;
-  background-image: linear-gradient(90deg, #CB297B, #650E47);
+  color: var(--brand-pink);
+  background-image: linear-gradient(135deg, #ED4286 0%, var(--brand-pink) 45%, var(--brand-pink-deep) 100%);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
@@ -69,22 +94,23 @@ body {
 
 .publication-venue {
   font-family: 'Google Sans', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  margin: 0.25rem auto 1.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0.5rem auto 1.5rem;
   text-align: center;
   display: block;
-  color: #CB297B;
-  background-image: linear-gradient(90deg, #CB297B, #650E47);
+  color: var(--brand-pink);
+  background-image: linear-gradient(90deg, var(--brand-pink), var(--brand-pink-deep));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 2px rgba(203, 41, 123, 0.12);
 }
 
 .publication-venue .venue-highlight {
   font-weight: 600;
+  font-style: italic;
 }
 
 .hero-teaser {
@@ -109,19 +135,20 @@ body {
   justify-content: center;
   gap: 0.35rem;
   padding: 0.35rem 0.6rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border: 1.5px solid var(--brand-border-strong);
+  border-radius: 12px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: #262626;
+  box-shadow: 0 4px 12px rgba(31, 64, 121, 0.18);
+  color: var(--brand-ink);
   font-size: 0.8rem;
   width: 83%;
   align-self: stretch;
   text-align: center;
+  font-style: italic;
 }
 
 .hero-inline-prompt .prompt-text {
-  color: #262626;
+  color: var(--brand-blue);
 }
 
 .cvpr-icon {
@@ -135,15 +162,15 @@ body {
   display: block;
   margin: 1rem auto 0;
   padding: 1rem;
-  background: #fafafa;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  background: linear-gradient(180deg, #ffffff 0%, var(--brand-bg-soft) 100%);
+  border: 1px solid var(--brand-border);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(31, 64, 121, 0.08), 0 2px 6px rgba(31, 64, 121, 0.04);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .poster-frame:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 48px rgba(31, 64, 121, 0.14), 0 4px 12px rgba(31, 64, 121, 0.06);
   transform: translateY(-2px);
 }
 
@@ -161,11 +188,11 @@ body {
 .loss-highlight {
   position: relative;
   margin: 1.5rem auto 0;
-  padding: 0.6rem 1rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(203, 41, 123, 0.08), rgba(101, 14, 71, 0.08));
-  border: 1px solid rgba(203, 41, 123, 0.25);
-  box-shadow: 0 4px 14px rgba(203, 41, 123, 0.08);
+  padding: 0.7rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(229, 51, 122, 0.07), rgba(47, 107, 172, 0.07));
+  border: 1px solid rgba(229, 51, 122, 0.22);
+  box-shadow: 0 6px 20px rgba(229, 51, 122, 0.06);
 }
 
 .loss-highlight-inline {
@@ -189,8 +216,9 @@ body {
   font-family: 'Google Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #CB297B;
-  background-image: linear-gradient(90deg, #CB297B, #650E47);
+  letter-spacing: 0.01em;
+  color: var(--brand-pink);
+  background-image: linear-gradient(90deg, var(--brand-pink), var(--brand-pink-deep));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -199,7 +227,7 @@ body {
 .loss-highlight-subtitle {
   font-family: 'Google Sans', sans-serif;
   font-size: 0.85rem;
-  color: #4a4a4a;
+  color: var(--brand-muted);
 }
 
 .loss-highlight-buttons {
@@ -239,33 +267,56 @@ body {
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.18;
+    color: var(--brand-ink);
 }
 
 .publication-authors {
     font-family: 'Google Sans', sans-serif;
-}
-
-.publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
+    color: var(--brand-muted);
 }
 
 .publication-awards {
-    color: #ff3860;
+    color: var(--brand-pink);
     width: fit-content;
     font-weight: bolder;
 }
 
-.publication-authors {
-}
-
 .publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+   color: var(--brand-blue-light) !important;
+   transition: color 0.15s ease;
 }
 
 .publication-authors a:hover {
+    color: var(--brand-pink);
     text-decoration: underline;
+}
+
+.section .title.is-3 {
+    font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
+    color: var(--brand-blue);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+    position: relative;
+}
+
+.section .title.is-3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--brand-pink), var(--brand-blue-light));
+}
+
+.section .content {
+    color: var(--brand-ink);
+    line-height: 1.7;
+    font-size: 1.02rem;
 }
 
 .author-block {
@@ -347,7 +398,7 @@ body {
 }
 
 .reconstruction-section {
-  background-color: #fafafa;
+  background-color: var(--brand-bg-soft);
 }
 
 .reconstruction-grid,
@@ -391,10 +442,10 @@ body {
   bottom: 0.15rem;
   left: 0.15rem;
   width: 25%;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   background: #f4f4f4;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .editing-inputs {
@@ -408,32 +459,38 @@ body {
 
 .editing-input {
   width: 22.5%;
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   background: #f4f4f4;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .editing-prompt {
   margin-top: 0.05rem;
   margin-bottom: 0.25rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #262626;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--brand-ink);
   font-size: 0.95rem;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--brand-border);
+  box-shadow: 0 2px 8px rgba(31, 64, 121, 0.06);
+}
+
+.editing-prompt .prompt-text {
+  font-style: italic;
+  color: var(--brand-blue);
 }
 
 .prompt-label {
   font-weight: 600;
   margin-right: 0.25rem;
-  color: #111;
+  color: var(--brand-blue);
 }
 
 .video-generation-section {
-  background-color: #fafafa;
+  background-color: var(--brand-bg-soft);
 }
 
 .video-generation-grid {
@@ -470,7 +527,7 @@ body {
 }
 
 .interactive-ui-section {
-  background-color: #fafafa;
+  background-color: var(--brand-bg-soft);
 }
 
 .interactive-ui-section .interactive-video-container {
@@ -480,8 +537,8 @@ body {
 
 .interactive-ui-section .interactive-video {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 14px 36px rgba(31, 64, 121, 0.12);
   background: #000;
 }
 
@@ -525,4 +582,136 @@ body {
   .video-generation-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Refined navbar, hero, buttons, footer ---------- */
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--brand-border);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+.navbar a.navbar-item {
+  color: var(--brand-blue);
+  transition: color 0.15s ease;
+}
+
+.navbar a.navbar-item:hover {
+  color: var(--brand-pink);
+  background-color: transparent;
+}
+
+.hero:not(.is-light):not(.is-small) {
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(229, 51, 122, 0.07), transparent 60%),
+    radial-gradient(1000px 600px at 80% 100%, rgba(47, 107, 172, 0.06), transparent 60%),
+    #ffffff;
+}
+
+.hero.is-light {
+  background: linear-gradient(180deg, var(--brand-bg-soft) 0%, #ffffff 100%);
+}
+
+.hero.is-light .hero-teaser {
+  color: var(--brand-ink);
+}
+
+.hero-teaser b {
+  color: var(--brand-blue);
+}
+
+/* Refined publication-link buttons */
+.publication-links .button.is-dark,
+.loss-highlight-buttons .button.is-dark {
+  background-color: #20243a;
+  border: 1px solid #20243a;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+              box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.publication-links .button.is-dark:hover,
+.loss-highlight-buttons .button.is-dark:hover {
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(31, 64, 121, 0.28);
+  color: #ffffff;
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-top: 1.25rem;
+}
+
+/* Section rhythm */
+.section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* BibTeX block */
+#BibTeX {
+  background: linear-gradient(180deg, #ffffff 0%, var(--brand-bg-soft) 100%);
+}
+
+#BibTeX .title {
+  color: var(--brand-blue);
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+#BibTeX pre {
+  background: #ffffff;
+  color: var(--brand-ink);
+  border: 1px solid var(--brand-border);
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 6px 22px rgba(31, 64, 121, 0.06);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  overflow-x: auto;
+}
+
+#BibTeX pre code {
+  background: transparent;
+  color: inherit;
+  font-family: 'Castoro', 'Courier New', monospace;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--brand-bg-soft);
+  border-top: 1px solid var(--brand-border);
+  color: var(--brand-muted);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer a {
+  color: var(--brand-blue-light);
+  transition: color 0.15s ease;
+}
+
+.footer a:hover {
+  color: var(--brand-pink);
+}
+
+/* Method figure refinement */
+.section figure.image img {
+  border-radius: 12px;
+}
+
+/* CVPR icon sized slightly larger to read clearly */
+.cvpr-icon {
+  width: 1.1em;
+  height: 1.1em;
 }
