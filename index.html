@@ -108,6 +108,15 @@
                     <span>Code (available soon)</span>
                   </a>
                 </span>
+                <!-- CVPR Link. -->
+                <span class="link-block">
+                  <a href="https://cvpr.thecvf.com/virtual/2026/poster/37349" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-external-link-alt"></i>
+                    </span>
+                    <span>CVPR</span>
+                  </a>
+                </span>
               </div>
 
             </div>
@@ -183,6 +192,20 @@
 
   <section class="section">
     <div class="container is-max-desktop">
+      <!-- CVPR Poster. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">CVPR 2026 Poster</h2>
+          <a href="./static/images/cvpr_perchead_poster_upload.png" target="_blank" rel="noopener">
+            <figure class="image">
+              <img src="./static/images/cvpr_perchead_poster_upload.png"
+                alt="PercHead CVPR 2026 Poster">
+            </figure>
+          </a>
+        </div>
+      </div>
+      <!--/ CVPR Poster. -->
+
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -206,6 +229,39 @@
           </div>
         </div>
       </div>
+
+      <!-- Loss highlight. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="loss-highlight">
+            <h3 class="loss-highlight-title">Our Perceptual Losses</h3>
+            <p class="loss-highlight-subtitle">
+              We also released our DINOv2 and SAM 2.1 perceptual losses as standalone, drop-in PyTorch modules. Feel free to try them out!
+            </p>
+            <div class="loss-highlight-buttons">
+              <span class="link-block">
+                <a href="https://github.com/tobias-kirschstein/dino-loss"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>DINOv2 Loss</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/tobias-kirschstein/sam-loss"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>SAM 2.1 Loss</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Loss highlight. -->
 
       <!-- Paper video. -->
       <div class="columns is-centered has-text-centered">
@@ -790,15 +846,13 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-      @misc{oroz2025percheadperceptualheadmodel,
-        title={PercHead: Perceptual Head Model for Single-Image 3D Head Reconstruction & Editing}, 
-        author={Antonio Oroz and Matthias Nießner and Tobias Kirschstein},
-        year={2025},
-        eprint={2511.02777},
-        archivePrefix={arXiv},
-        primaryClass={cs.CV},
-        url={https://arxiv.org/abs/2511.02777}, 
-      }
+        @inproceedings{oroz2026perchead,
+          title={Perchead: Perceptual head model for single-image 3d head reconstruction \& editing},
+          author={Oroz, Antonio and Nie{\ss}ner, Matthias and Kirschstein, Tobias},
+          booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+          pages={4097--4108},
+          year={2026}
+        }
       </code></pre>
     </div>
   </section>
