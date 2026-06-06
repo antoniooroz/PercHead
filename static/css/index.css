@@ -124,6 +124,13 @@ body {
   color: #262626;
 }
 
+.cvpr-icon {
+  width: 1em;
+  height: 1em;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
 .poster-frame {
   display: block;
   margin: 1rem auto 0;
