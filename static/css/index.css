@@ -124,6 +124,33 @@ body {
   color: #262626;
 }
 
+.poster-frame {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 1rem;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.poster-frame:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.poster-frame figure.image {
+  margin: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.poster-frame figure.image img {
+  display: block;
+  border-radius: 8px;
+}
+
 .loss-highlight {
   position: relative;
   margin: 2rem auto 1rem;
