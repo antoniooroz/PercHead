@@ -346,8 +346,22 @@ body {
 .loss-highlight-buttons {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+@media screen and (max-width: 480px) {
+  .loss-highlight-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .loss-highlight-buttons .link-block {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .loss-highlight-buttons .link-block a {
